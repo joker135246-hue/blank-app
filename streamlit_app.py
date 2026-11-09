@@ -25,8 +25,8 @@ with st.form("add_data_form", clear_on_submit=True):
     if submit_button and user_input:
         if supabase:
             try:
-                # ⚠️ 這裡的 'todos' 是你在 Supabase 建立的資料表名稱，'content' 是欄位名稱
-                data, count = supabase.table('todos'0).insert({"content": user_input}).execute()
+                # ⚠️ 這裡的 'todos' 是你在 Supabase 建立的資料表名稱，'內容' 是欄位名稱
+                data, count = supabase.table('todos'0).insert({"內容": user_input}).execute()
                 st.success("✅ 資料已成功同步至雲端資料庫！")
                 st.rerun() # 自動重新整理網頁顯示新資料
             except Exception as e:
@@ -44,8 +44,8 @@ if supabase:
         
         if records:
             for item in records:
-                # 假設你的資料欄位叫做 'content'
-                st.info(f"🔹 {item.get('content', '無內容')}")
+                # 假設你的資料欄位叫做 '內容'
+                st.info(f"🔹 {item.get('內容', '無內容')}")
         else:
             st.write("目前雲端尚無資料，請在上方輸入第一筆更新！")
     except Exception as e:
