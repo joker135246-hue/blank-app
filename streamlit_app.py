@@ -40,7 +40,7 @@ st.subheader("📋 目前雲端最新同步資料")
 if supabase:
     try:
         # 從雲端資料庫抓取最新更新的所有內容
-        response = supabase.table('posts').select("*").order('id', desc=True).execute()
+        response = supabase.table('todos').select("*").order('id', desc=True).execute()
         records = response.data
         
         if records:
