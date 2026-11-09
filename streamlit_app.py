@@ -25,12 +25,12 @@ with st.form("add_data_form", clear_on_submit=True):
     if submit_button and user_input:
         if supabase:
             try:
-                # ⚠️ 這裡的 'posts' 是你在 Supabase 建立的資料表名稱，'content' 是欄位名稱
-                data, count = supabase.table('posts').insert({"content": user_input}).execute()
+                # ⚠️ 這裡的 'todos' 是你在 Supabase 建立的資料表名稱，'content' 是欄位名稱
+                data, count = supabase.table('todos'0).insert({"content": user_input}).execute()
                 st.success("✅ 資料已成功同步至雲端資料庫！")
                 st.rerun() # 自動重新整理網頁顯示新資料
             except Exception as e:
-                st.error(f"寫入失敗，請確認 Supabase 的資料表名稱是否為 'posts'。錯誤訊息: {e}")
+                st.error(f"寫入失敗，請確認 Supabase 的資料表名稱是否為 'todos'。錯誤訊息: {e}")
         else:
             st.error("雲端資料庫未連線成功。")
 
