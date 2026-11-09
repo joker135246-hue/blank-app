@@ -30,7 +30,8 @@ with st.form("add_data_form", clear_on_submit=True):
                 st.success("✅ 資料已成功同步至雲端資料庫！")
                 st.rerun() # 自動重新整理網頁顯示新資料
             except Exception as e:
-                st.error(f"寫入失敗，請確認 Supabase 的資料表名稱是否為 'todos'。錯誤訊息: {e}")
+    st.exception(e)  # 讓 Streamlit 直接噴出最詳細的錯誤追蹤
+
         else:
             st.error("雲端資料庫未連線成功。")
 
@@ -48,5 +49,5 @@ if supabase:
                 st.info(f"🔹 {item.get('內容', '無內容')}")
         else:
             st.write("目前雲端尚無資料，請在上方輸入第一筆更新！")
-    except Exception as e:
-        st.write("讀取雲端資料失敗，請確認你的 Supabase 是否已建立名為 'posts' 的資料表。")
+  except Exception as e:
+    st.exception(e)  # 讓 Streamlit 直接噴出最詳細的錯誤追蹤
