@@ -3,8 +3,8 @@ import streamlit as st
 from supabase import create_client, Client
 
 # 1. 初始化 Supabase 雲端資料庫連線 (自動讀取你在 Vercel 設定的密碼)
-url: str = os.environ.get("NEXT_PUBLIC_SUPABASE_URL", "")
-key: str = os.environ.get("NEXT_PUBLIC_SUPABASE_ANON_KEY", "")
+url: str = os.environ.get("SUPABASE_URL", "")
+key: str = os.environ.get("SUPABASE_ANON_KEY", "")
 
 # 防止未設定環境變數時報錯，但在 Vercel 線上會正常運作
 if not url or not key:
